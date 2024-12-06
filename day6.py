@@ -1,8 +1,4 @@
-from multiprocessing.spawn import freeze_support
-from concurrent.futures import ThreadPoolExecutor
 from util import get_input, time_fn
-from multiprocessing import Pool, Queue, Process
-import re
 
 def parse_input():
     lines = get_input('day6')
@@ -87,7 +83,6 @@ def map_has_loop(the_map):
 
 
 def part2():
-    freeze_support()
     a_map = parse_input()
     guard_x, guard_y = find_guard(a_map)
     walk_map(a_map)
