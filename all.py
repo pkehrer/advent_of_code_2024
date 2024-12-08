@@ -10,3 +10,6 @@ import day5
 print()
 import day6
 print()
+import day7
+print()
+import day8
