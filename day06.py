@@ -5,7 +5,7 @@ from util import get_puzzle_input_lines, run_file
 
 
 def parse_input():
-    lines = get_puzzle_input_lines('day6')
+    lines = get_puzzle_input_lines('day06')
     return [[cell for cell in list(l)] for l in lines]
 
 def find_guard(map):

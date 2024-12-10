@@ -7,7 +7,7 @@ from util import get_puzzle_input_lines, run_file
 def parse_input():
     list1 = []
     list2 = []
-    for line in get_puzzle_input_lines('day1'):
+    for line in get_puzzle_input_lines('day01'):
         tokens = line.split()
         list1.append(tokens[0])
         list2.append(tokens[1])

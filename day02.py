@@ -5,7 +5,7 @@ from util import get_puzzle_input_lines, run_file
 
 
 def parse_input():
-    lines = get_puzzle_input_lines('day2')
+    lines = get_puzzle_input_lines('day02')
     return [[int(cell) for cell in line.split()] for line in lines]
 
 def is_safe(report):

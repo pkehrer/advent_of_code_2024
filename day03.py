@@ -6,9 +6,12 @@ import re
 from util import get_puzzle_input_lines, run_file
 
 
+def parse_input():
+    return get_puzzle_input_lines('day03')
+
 def part1():
     total = 0
-    for line in get_puzzle_input_lines('day3'):
+    for line in parse_input():
         pattern = r"mul\(\d+,\d+\)"
         match = re.findall(pattern, line)
         for expr in match:
@@ -23,7 +26,7 @@ def part2():
     small_total = 0
     enabled = True
 
-    for line in get_puzzle_input_lines('day3'):
+    for line in parse_input():
         pattern = r"(mul\(\d+,\d+\)|do\(\)|don\'t\(\))"
         match = re.findall(pattern, line)
 

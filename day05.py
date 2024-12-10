@@ -7,7 +7,7 @@ from util import get_puzzle_input_lines, run_file
 def parse_input():
     rules = {}
     sequences = []
-    for line in get_puzzle_input_lines('day5'):
+    for line in get_puzzle_input_lines('day05'):
         if '|' in line:
             nums = line.split('|')
             if nums[0] not in rules:

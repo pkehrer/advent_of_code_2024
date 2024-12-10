@@ -1,11 +1,11 @@
 """
-https://adventofcode.com/2024/day/19
+https://adventofcode.com/2024/day/9
 """
 from util import get_puzzle_input_lines, run_file, start_timer, get_elapsed_ms
 
 
 def parse_input():
-    [puzzle_input] = get_puzzle_input_lines('day9')
+    [puzzle_input] = get_puzzle_input_lines('day09')
     data = []
 
     is_file = True

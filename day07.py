@@ -5,7 +5,7 @@ from util import get_puzzle_input_lines, run_file
 
 
 def parse_input():
-    lines = get_puzzle_input_lines('day7')
+    lines = get_puzzle_input_lines('day07')
     records = []
     for line in lines:
         [result, numbers_str] = line.split(': ')

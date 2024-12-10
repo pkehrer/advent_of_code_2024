@@ -5,7 +5,7 @@ from util import get_puzzle_input_lines, run_file
 
 
 def parse_input():
-    lines = get_puzzle_input_lines('day4')
+    lines = get_puzzle_input_lines('day04')
     return [list(record) for record in lines]
 
 def get_coordinates_for_letter(records, letter_to_find):

@@ -4,7 +4,7 @@ https://adventofcode.com/2024/day/8
 from util import get_puzzle_input_lines, run_file
 
 def parse_input():
-    lines = get_puzzle_input_lines('day8')
+    lines = get_puzzle_input_lines('day08')
     records = {}
     for y, line in enumerate(lines):
         for x, cell in enumerate(line):
