@@ -1,3 +1,6 @@
+"""
+https://adventofcode.com/2024/day/3
+"""
 from util import get_input, time_fn
 import re
 

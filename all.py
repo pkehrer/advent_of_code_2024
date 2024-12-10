@@ -13,3 +13,8 @@ print()
 import day7
 print()
 import day8
+print()
+import day9
+print()
+import day10
+print()

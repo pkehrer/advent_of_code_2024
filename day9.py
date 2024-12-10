@@ -1,3 +1,6 @@
+"""
+https://adventofcode.com/2024/day/19
+"""
 from util import get_input, time_fn
 
 def parse_input():
@@ -27,7 +30,6 @@ def print_data(data):
 
 def part1():
     data, _ = parse_input()
-    #print_data(data)
 
     free_index = 0
     move_index = len(data) - 1
@@ -46,7 +48,6 @@ def part1():
         data[free_index] = data[move_index]
         data[move_index] = None
         move_index -= 1
-        #print_data(data)
 
     total = 0
     for i in range(len(data)):
@@ -68,7 +69,6 @@ def find_free_spot(data, length, max_spot):
                 return free_spot_start, free_spot_end
         else:
             free_spot_start = None
-            free_spot_end = None
 
     return None, None
 

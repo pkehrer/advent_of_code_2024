@@ -1,3 +1,6 @@
+"""
+https://adventofcode.com/2024/day/8
+"""
 from util import get_input, time_fn
 
 def parse_input():
@@ -17,23 +20,23 @@ def parse_input():
 
 def part1():
     records, max_x, max_y = parse_input()
-    antinodes = []
+    anti_nodes = []
     for freq, coordinates in records.items():
         for src in coordinates:
             for dest in [coordinate for coordinate in coordinates if coordinate != src]:
                 x_diff = dest[0] - src[0]
                 y_diff = dest[1] - src[1]
-                new_antinodes = [
+                new_anti_nodes = [
                     (src[0] - x_diff, src[1] - y_diff),
                     (dest[0] + x_diff, dest[1] + y_diff)
                 ]
 
-                for node in new_antinodes:
-                    if node[0] >= 0 and node[0] <= max_x and node[1] >= 0 and node[1] <= max_y:
+                for node in new_anti_nodes:
+                    if 0 <= node[0] <= max_x and 0 <= node[1] <= max_y:
                         node_str = f'{node[0],node[1]}'
-                        if node_str not in antinodes:
-                            antinodes.append(node_str)
-    print(f'Part 1: {len(antinodes)}')
+                        if node_str not in anti_nodes:
+                            anti_nodes.append(node_str)
+    print(f'Part 1: {len(anti_nodes)}')
 
 def part2():
     records, max_x, max_y = parse_input()
