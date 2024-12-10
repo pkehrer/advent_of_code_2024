@@ -1,11 +1,11 @@
 """
 https://adventofcode.com/2024/day/2
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
 
 
 def parse_input():
-    lines = get_input('day2')
+    lines = get_puzzle_input_lines('day2')
     return [[int(cell) for cell in line.split()] for line in lines]
 
 def is_safe(report):
@@ -35,7 +35,7 @@ def part1():
         if is_safe(report):
             safe_reports += 1
 
-    print(f'Part 1: {safe_reports}')
+    return safe_reports
 
 def part2():
     safe_dampened_reports = 0
@@ -43,8 +43,9 @@ def part2():
         if is_safe_dampened(report):
             safe_dampened_reports += 1
 
-    print(f'Part 2: {safe_dampened_reports}')
+    return safe_dampened_reports
 
-print('Day 2:')
-time_fn(part1) # 639
-time_fn(part2) # 674
+run_file()
+# Day 2:
+# 	Part 1: 639  execution time: 1.4ms
+# 	Part 2: 674  execution time: 2.1ms

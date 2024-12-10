@@ -1,10 +1,11 @@
 """
 https://adventofcode.com/2024/day/6
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
+
 
 def parse_input():
-    lines = get_input('day6')
+    lines = get_puzzle_input_lines('day6')
     return [[cell for cell in list(l)] for l in lines]
 
 def find_guard(map):
@@ -58,7 +59,7 @@ def part1():
     score = 0 # one spot for his starting position?
     for row in the_map:
         score += len([cell for cell in row if cell == 'X'])
-    print(f'Part 1: {score}')
+    return score
 
 
 def map_has_loop(the_map):
@@ -103,8 +104,9 @@ def part2():
         if map_has_loop(the_map):
             good_spots += 1
 
-    print(f'Part 2: {good_spots}')
+    return good_spots
 
-print('Day 6:')
-time_fn(part1) # 5153
-time_fn(part2) # 1711
+run_file()
+# Day 6:
+# 	Part 1: 5153  execution time: 2.5ms
+# 	Part 2: 1711  execution time: 5250.3ms

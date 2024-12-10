@@ -1,12 +1,13 @@
 """
 https://adventofcode.com/2024/day/1
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
+
 
 def parse_input():
     list1 = []
     list2 = []
-    for line in get_input('day1'):
+    for line in get_puzzle_input_lines('day1'):
         tokens = line.split()
         list1.append(tokens[0])
         list2.append(tokens[1])
@@ -34,7 +35,7 @@ def part1():
 
         list_distance += abs(int(rank1[0]) - (int(rank2[0])))
 
-    print(f'Part 1: {list_distance}')
+    return list_distance
 
 def part2():
     list1, list2 = parse_input()
@@ -43,9 +44,10 @@ def part2():
         items_in_2 = list(filter(lambda i: i == item1, list2))
         similarity += int(item1) * len(items_in_2)
 
+    return similarity
 
-    print(f'Part 2: {similarity}')
 
-print('Day 1:')
-time_fn(part1) # 2378066
-time_fn(part2) # 18934359
+run_file()
+# Day 1:
+# 	Part 1: 2378066  execution time: 53.5ms
+# 	Part 2: 18934359  execution time: 29.8ms

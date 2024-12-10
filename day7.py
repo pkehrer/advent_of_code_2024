@@ -1,10 +1,11 @@
 """
 https://adventofcode.com/2024/day/7
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
+
 
 def parse_input():
-    lines = get_input('day7')
+    lines = get_puzzle_input_lines('day7')
     records = []
     for line in lines:
         [result, numbers_str] = line.split(': ')
@@ -50,7 +51,7 @@ def part1():
         if record[0] in possible_results:
             score += record[0]
 
-    print(f'Part 1: {score}')
+    return score
 
 def part2():
     records = parse_input()
@@ -61,8 +62,9 @@ def part2():
         if record[0] in possible_results:
             score += record[0]
 
-    print(f'Part 2: {score}')
+    return score
 
-print('Day 7:')
-time_fn(part1) # 66343330034722
-time_fn(part2) # 637696070419031
+run_file()
+# Day 7:
+# 	Part 1: 66343330034722  execution time: 44.2ms
+# 	Part 2: 637696070419031  execution time: 4635.0ms

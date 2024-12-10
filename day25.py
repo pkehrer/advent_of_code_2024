@@ -1,20 +1,18 @@
 """
 https://adventofcode.com/2024/day/25
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
 
 def parse_input():
-    lines = get_input('day25')
+    lines = get_puzzle_input_lines('day25')
     return lines
 
 def part1():
     answer = 0
-    print(f'Part 1: {answer}') 
+    return answer
     
 def part2():
     answer = 0
-    print(f'Part 2: {answer}')
+    return answer
 
-print('Day 25:')
-time_fn(part1) #
-time_fn(part2) #
+run_file()

@@ -1,15 +1,18 @@
 """
 https://adventofcode.com/2024/day/5
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
+
 
 def parse_input():
-    rules = []
+    rules = {}
     sequences = []
-    for line in get_input('day5'):
+    for line in get_puzzle_input_lines('day5'):
         if '|' in line:
             nums = line.split('|')
-            rules.append((nums[0], nums[1]))
+            if nums[0] not in rules:
+                rules[nums[0]] = []
+            rules[nums[0]].append(nums[1])
         elif ',' in line:
             nums = line.split(',')
             sequences.append(nums)
@@ -18,19 +21,12 @@ def parse_input():
 
 def is_sequence_valid(sequence, rules):
     for letter_pos, letter in enumerate(sequence):
-        for rule in [r for r in rules if r[0] == letter]:
-            if rule[1] in sequence:
-                next_letter_pos = sequence.index(rule[1])
+        for must_be_after in rules[letter]:
+            if must_be_after in sequence:
+                next_letter_pos = sequence.index(must_be_after)
                 if next_letter_pos < letter_pos:
-                    return False, rule
+                    return False, (letter_pos, next_letter_pos)
     return True, None
-
-def swap(arr, rule):
-    i1 = arr.index(rule[0])
-    i2 = arr.index(rule[1])
-    temp = arr[i1]
-    arr[i1] = arr[i2]
-    arr[i2] = temp
 
 def part1():
     score = 0
@@ -41,22 +37,30 @@ def part1():
             middle_letter = sequence[int((len(sequence) - 1) / 2)]
             score += int(middle_letter)
 
-    print(f'Part 1: {score}')
+    return score
+
+def swap(arr, index_pair):
+    i1, i2 = index_pair
+    temp = arr[i1]
+    arr[i1] = arr[i2]
+    arr[i2] = temp
 
 def part2():
     rules, sequences = parse_input()
     score = 0
     for sequence in sequences:
         valid, broken_rule = is_sequence_valid(sequence, rules)
-        if valid:
+        if valid: # skip "already valid" sequences
             continue
+
         while not valid:
             swap(sequence, broken_rule)
             valid, broken_rule = is_sequence_valid(sequence, rules)
         middle_letter = sequence[int((len(sequence) -1) /2)]
         score += int(middle_letter)
-    print(f'Part 2: {score}')
+    return score
 
-print('Day 5:')
-time_fn(part1) # 4996
-time_fn(part2) # 6311
+run_file()
+# Day 5:
+# 	Part 1: 4996  execution time: 8.5ms
+# 	Part 2: 6311  execution time: 301.1ms

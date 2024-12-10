@@ -1,11 +1,11 @@
 """
 https://adventofcode.com/2024/day/4
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
 
 
 def parse_input():
-    lines = get_input('day4')
+    lines = get_puzzle_input_lines('day4')
     return [list(record) for record in lines]
 
 def get_coordinates_for_letter(records, letter_to_find):
@@ -43,15 +43,15 @@ def part1():
     records = parse_input()
     x_coordinates = get_coordinates_for_letter(records, 'X')
     for x,y in x_coordinates:
-        for dir in ["U", "UR", "R", "DR", "D", "DL", "L", "UL"]:
+        for direction in ["U", "UR", "R", "DR", "D", "DL", "L", "UL"]:
             is_xmas = True
             for i, next_letter in enumerate(list('MAS')):
-                if not check_next(records, (x,y), dir, i + 1, next_letter):
+                if not check_next(records, (x,y), direction, i + 1, next_letter):
                     is_xmas = False
             if is_xmas:
                 xmas_count += 1
 
-    print(f'Part 1: {xmas_count}')
+    return xmas_count
 
 def part2():
     x_mas_count = 0
@@ -67,8 +67,9 @@ def part2():
         if x_mas_count_on_letter > 2:
             print(x_mas_count_on_letter)
 
-    print(f'Part 2: {x_mas_count}')
+    return x_mas_count
 
-print('Day 4:')
-time_fn(part1) # 2530
-time_fn(part2) # 1921
+run_file()
+# Day 4:
+# 	Part 1: 2530  execution time: 34.9ms
+# 	Part 2: 1921  execution time: 8.3ms

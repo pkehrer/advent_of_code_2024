@@ -1,7 +1,10 @@
 import os
 
 def py_contents(day):
-    return f"""from util import get_input, time_fn
+    return f"""\"\"\"
+https://adventofcode.com/2024/day/{day}
+\"\"\"
+from util import get_input, run_file
 
 def parse_input():
     lines = get_input('day{day}')
@@ -9,15 +12,13 @@ def parse_input():
 
 def part1():
     answer = 0
-    print(f'Part 1: {{answer}}') 
+    return answer
     
 def part2():
     answer = 0
-    print(f'Part 2: {{answer}}')
+    return answer
 
-print('Day {day}:')
-time_fn(part1) #
-time_fn(part2) #
+run_file()
 """
 
 for i in range(1, 26):

@@ -1,10 +1,10 @@
 """
 https://adventofcode.com/2024/day/8
 """
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
 
 def parse_input():
-    lines = get_input('day8')
+    lines = get_puzzle_input_lines('day8')
     records = {}
     for y, line in enumerate(lines):
         for x, cell in enumerate(line):
@@ -36,7 +36,7 @@ def part1():
                         node_str = f'{node[0],node[1]}'
                         if node_str not in anti_nodes:
                             anti_nodes.append(node_str)
-    print(f'Part 1: {len(anti_nodes)}')
+    return len(anti_nodes)
 
 def part2():
     records, max_x, max_y = parse_input()
@@ -99,8 +99,9 @@ def part2():
                     if is_int(y):
                         y = round(y)
 
-    print(f'Part 2: {len(antinodes)}')
+    return len(antinodes)
 
-print('Day 8:')
-time_fn(part1) # 273
-time_fn(part2) # 1017
+run_file()
+# Day 8:
+# 	Part 1: 273  execution time: 2.1ms
+# 	Part 2: 1017  execution time: 24.3ms

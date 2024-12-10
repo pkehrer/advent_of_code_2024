@@ -2,11 +2,12 @@
 https://adventofcode.com/2024/day/10
 """
 
-from util import get_input, time_fn
+from util import get_puzzle_input_lines, run_file
+
 
 # list of lists of ints parsed from single digit characters
 def parse_input():
-    lines = get_input('day10')
+    lines = get_puzzle_input_lines('day10')
     return [[-1 if cell == '.' else int(cell) for cell in list(line)] for line in lines]
 
 def print_map(a_map):
@@ -71,7 +72,7 @@ def part1():
 
         answer += len(trail_ends)
 
-    print(f'Part 1: {answer}') 
+    return answer
     
 def part2():
     answer = 0
@@ -90,8 +91,10 @@ def part2():
             if len(trail) == 10:
                 answer += 1
 
-    print(f'Part 2: {answer}')
+    return answer
 
-print('Day 10:')
-time_fn(part1) # 646
-time_fn(part2) # 1494
+run_file()
+# Day 10:
+# 	Part 1: 646  execution time: 10.8ms
+# 	Part 2: 1494  execution time: 9.5ms
+
