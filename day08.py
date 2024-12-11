@@ -1,7 +1,7 @@
 """
 https://adventofcode.com/2024/day/8
 """
-from util import get_puzzle_input_lines, run_file
+from util import get_puzzle_input_lines
 
 def parse_input():
     lines = get_puzzle_input_lines('day08')
@@ -101,7 +101,6 @@ def part2():
 
     return len(antinodes)
 
-run_file()
 # Day 8:
 # 	Part 1: 273  execution time: 2.1ms
 # 	Part 2: 1017  execution time: 24.3ms

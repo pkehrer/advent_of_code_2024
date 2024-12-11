@@ -1,7 +1,7 @@
 """
 https://adventofcode.com/2024/day/2
 """
-from util import get_puzzle_input_lines, run_file
+from util import get_puzzle_input_lines
 
 
 def parse_input():
@@ -45,7 +45,6 @@ def part2():
 
     return safe_dampened_reports
 
-run_file()
 # Day 2:
 # 	Part 1: 639  execution time: 1.4ms
 # 	Part 2: 674  execution time: 2.1ms

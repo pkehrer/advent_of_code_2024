@@ -3,7 +3,7 @@ https://adventofcode.com/2024/day/3
 """
 import re
 
-from util import get_puzzle_input_lines, run_file
+from util import get_puzzle_input_lines
 
 
 def parse_input():
@@ -42,7 +42,6 @@ def part2():
 
     return small_total
 
-run_file()
 # Day 3:
 # 	Part 1: 191183308  execution time: 1.0ms
 # 	Part 2: 92082041  execution time: 0.6ms

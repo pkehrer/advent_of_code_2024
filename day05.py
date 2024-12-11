@@ -1,7 +1,7 @@
 """
 https://adventofcode.com/2024/day/5
 """
-from util import get_puzzle_input_lines, run_file
+from util import get_puzzle_input_lines
 
 
 def parse_input():
@@ -60,7 +60,6 @@ def part2():
         score += int(middle_letter)
     return score
 
-run_file()
 # Day 5:
 # 	Part 1: 4996  execution time: 8.5ms
 # 	Part 2: 6311  execution time: 301.1ms

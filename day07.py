@@ -1,7 +1,7 @@
 """
 https://adventofcode.com/2024/day/7
 """
-from util import get_puzzle_input_lines, run_file
+from util import get_puzzle_input_lines
 
 
 def parse_input():
@@ -64,7 +64,6 @@ def part2():
 
     return score
 
-run_file()
 # Day 7:
 # 	Part 1: 66343330034722  execution time: 44.2ms
 # 	Part 2: 637696070419031  execution time: 4635.0ms

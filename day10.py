@@ -2,7 +2,7 @@
 https://adventofcode.com/2024/day/10
 """
 
-from util import get_puzzle_input_lines, run_file
+from util import get_puzzle_input_lines
 
 
 # list of lists of ints parsed from single digit characters
@@ -93,7 +93,6 @@ def part2():
 
     return answer
 
-run_file()
 # Day 10:
 # 	Part 1: 646  execution time: 10.8ms
 # 	Part 2: 1494  execution time: 9.5ms

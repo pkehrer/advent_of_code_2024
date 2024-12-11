@@ -1,7 +1,7 @@
 """
 https://adventofcode.com/2024/day/1
 """
-from util import get_puzzle_input_lines, run_file
+from util import get_puzzle_input_lines
 
 
 def parse_input():
@@ -46,8 +46,6 @@ def part2():
 
     return similarity
 
-
-run_file()
 # Day 1:
 # 	Part 1: 2378066  execution time: 53.5ms
 # 	Part 2: 18934359  execution time: 29.8ms

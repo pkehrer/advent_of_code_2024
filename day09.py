@@ -1,7 +1,7 @@
 """
 https://adventofcode.com/2024/day/9
 """
-from util import get_puzzle_input_lines, run_file, start_timer, get_elapsed_ms
+from util import get_puzzle_input_lines
 
 
 def parse_input():
@@ -64,7 +64,7 @@ def find_free_spot(data, length, max_spot):
     global min_free_spot_by_length
     free_spot_start, free_spot_end = None, None
     start_looking = min_free_spot_by_length.get(length, 0)
-    for i in range(start_looking, len(data)):
+    for i in range(start_looking, max_spot + 1):
         if i > max_spot:
             break
         if data[i] is None:
@@ -92,12 +92,14 @@ def part2():
     file_id = max(filter(lambda d: d is not None, data))
     move_index = find_last_index(data, file_id)
 
-
     while True:
         if file_id == 0:
             break
 
         start_move_index = move_index
+        if data[start_move_index] != file_id:
+            raise(ValueError("Crap"))
+
         while data[start_move_index] == file_id:
             start_move_index -= 1
         start_move_index +=1
@@ -121,11 +123,8 @@ def part2():
         if value is not None:
             total += index * value
 
-
-
     return total
 
-run_file()
 # Day 9:
 # 	Part 1: 6448989155953  execution time: 15.2ms
 # 	Part 2: 6476642796832  execution time: 35.2ms

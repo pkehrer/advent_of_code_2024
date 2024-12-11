@@ -1,7 +1,7 @@
 """
 https://adventofcode.com/2024/day/6
 """
-from util import get_puzzle_input_lines, run_file, start_timer, get_elapsed_ms
+from util import get_puzzle_input_lines
 import copy
 
 
@@ -105,7 +105,6 @@ def part2():
 
     return good_spots
 
-run_file()
 # Day 06:
 # 	Part 1: 5153  execution time: 2.3ms
 # 	Part 2: 1711  execution time: 4526.1ms
