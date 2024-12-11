@@ -16,7 +16,7 @@ def run_file(filename):
             start = util.start_timer()
             answer = str(part())
             padding = ''
-            for i in range(14 - len(answer)):
+            for i in range(16 - len(answer)):
                 padding = padding + ' '
             print(christmas_text(f'\tPart {num}: ') + answer + padding, end='')
             util.print_elapsed_time(start)
