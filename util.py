@@ -20,3 +20,9 @@ def print_elapsed_time(start):
     time_string = f'{(seconds * 1000):.1f}ms'
     print(italic_text(christmas_text('  execution time: ') + green_text(time_string)))
 
+# utility to increment a dictionary value that may not exist
+def increment_dict(a_dict, key, increment = 1):
+    if not key in a_dict:
+        a_dict[key] = increment
+    else:
+        a_dict[key] += increment
