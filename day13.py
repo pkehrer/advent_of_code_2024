@@ -3,29 +3,32 @@ https://adventofcode.com/2024/day/13
 """
 
 from util import get_puzzle_input_lines
+import re
 
-def parse_input(prize_offset = 0):
-    def parse_line(btn_line, sep):
-        x_expr, y_expr = btn_line.split(' ')[-2:]
-        return int(x_expr.strip(',').split(sep)[1]), int(y_expr.split(sep)[1])
 
+def parse_input(prize_offset=0):
+    """
+    store all relevant parameters from each game as tuple (ax, ay, bx, by, px, py).
+
+    The following puzzle input would be represented as (94, 34, 22, 67, 8400, 5400)
+    Button A: X+94, Y+34
+    Button B: X+22, Y+67
+    Prize: X=8400, Y=5400
+
+    :param prize_offset: add this value to px and py for part2
+    :return: as lit of the above tuples, one for each game
+    """
+
+    regex = r'Button A: X\+(\d+), Y\+(\d+)\nButton B: X\+(\d+), Y\+(\d+)\nPrize: X=(\d+), Y=(\d+)'
     lines = get_puzzle_input_lines('day13')
     games = []
     for line_start in range(0, len(lines), 4):
-        a_btn_line, b_btn_line, prize_line = lines[line_start:line_start+3]
-        prize = parse_line(prize_line, '=')
-
-        games.append({
-            'a_change': parse_line(a_btn_line, '+'),
-            'b_change': parse_line(b_btn_line, '+'),
-            'prize': (prize[0] + prize_offset, prize[1] + prize_offset)
-        })
+        game_text = '\n'.join(lines[line_start:line_start + 3])
+        game = [int(x) for x in re.match(regex, game_text).groups()]
+        game[-1], game[-2] = game[-1] + prize_offset, game[-2] + prize_offset
+        games.append(game)
     return games
 
-def round_if_int(number):
-    epsilon = .00001
-    rounded = round(number)
-    return None if abs(number - rounded) > epsilon else rounded
 
 def play_game(game):
     """
@@ -40,38 +43,27 @@ def play_game(game):
     When solutions to b_presses or a_presses are fractional, it suggests an unsolvable game (it would require part of
     a press of the button to get the solution).
     """
-    px, py = game['prize']
-    ax, ay = game['a_change']
-    bx, by = game['b_change']
+    ax, ay, bx, by, px, py = game
 
-    b_presses = round_if_int((py * ax - px * ay) / (ax * by - ay * bx))
-    if b_presses is None:
+    b_presses = (py * ax - px * ay) / (ax * by - ay * bx)
+    if not b_presses.is_integer():
         return 0
 
-    a_presses = round_if_int((px - (bx * b_presses)) / ax)
-    if a_presses is None:
+    a_presses = (px - (bx * b_presses)) / ax
+    if not a_presses.is_integer():
         return 0
 
-    return a_presses * 3 + b_presses
+    return int(a_presses * 3 + b_presses)
 
 
 def part1():
-    total = 0
-    games = parse_input()
-    for i, game in enumerate(games):
-        cost = play_game(game)
-        total += cost
+    costs = [play_game(game) for game in parse_input()]
+    return sum(costs)
 
-    return total
-    
+
 def part2():
-    total = 0
-    games = parse_input(10000000000000)
-    for i, game in enumerate(games):
-        cost = play_game(game)
-        total += cost
-
-    return total
+    costs = [play_game(game) for game in parse_input(prize_offset=10000000000000)]
+    return sum(costs)
 
 # Day 13 🎄
 # 	Part 1: 28059             execution time: 1.0ms
